@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle"> <!-- You can still use rectangle; Modifier.size will make it square -->
+    <solid android:color="#EEEEEE" /> <!-- A slightly different light gray, or your preferred placeholder color -->
+    <!-- Optional: Define a default size, though Modifier.size(80.dp) will override -->
+    <size
+        android:width="80dp"
+        android:height="80dp" />
+    <!-- Optional: Add rounded corners if you want the placeholder itself to be rounded -->
+    <!-- <corners android:radius="8dp" /> -->
+</shape>
