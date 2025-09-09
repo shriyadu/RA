@@ -6,8 +6,12 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -19,14 +23,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import com.example.recipeapp.model.Equipments
-import com.example.recipeapp.model.Ingredient
-import kotlin.collections.forEach
+import coil.compose.rememberAsyncImagePainter
+import com.example.recipeapp.ui.feature.recipeDetail.model.Equipment
+// import com.example.recipeapp.ui.feature.recipeDetail.model.RecipeDetail // Not used, can be removed
+// import kotlin.collections.forEach // Not needed for .forEach lambda
 
 @Composable
 fun Equipments(
-
-    equipments: List<Equipments>,
+    equipments: List<Equipment>,
     title: String,
     modifier: Modifier = Modifier
 ) {
@@ -36,17 +40,21 @@ fun Equipments(
             style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
             modifier = Modifier.padding(start = 8.dp, bottom = 8.dp)
         )
-        Row(
-            horizontalArrangement = Arrangement.spacedBy(16.dp),
-            modifier = Modifier.padding(horizontal = 8.dp)
+
+        LazyRow(
+            modifier = Modifier
+                .padding(horizontal = 8.dp)
+                .height(120.dp) // enough height for image + text
+                .fillMaxWidth(),
+            horizontalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            equipments.forEach { equipments ->
+            items(equipments) { equipment ->
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Image(
-                        painter = equipments.image,
-                        contentDescription = equipments.name,
+                        painter = rememberAsyncImagePainter(model = equipment.imageUrl),
+                        contentDescription = equipment.name,
                         modifier = Modifier
                             .size(64.dp)
                             .clip(CircleShape)
@@ -57,14 +65,12 @@ fun Equipments(
                         contentScale = ContentScale.Crop
                     )
                     Text(
-                        text = equipments.name,
+                        text = equipment.name,
                         style = MaterialTheme.typography.bodySmall,
                         modifier = Modifier.padding(top = 4.dp)
                     )
                 }
-
             }
-
         }
     }
 }

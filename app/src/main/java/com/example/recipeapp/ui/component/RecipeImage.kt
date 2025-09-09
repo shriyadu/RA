@@ -45,7 +45,7 @@ fun RecipeImage(
     modifier: Modifier = Modifier,
     imagePainter: Painter,
     title: String,
-    onBackClick: () -> Unit = {}, // Added for back navigation
+     // Added for back navigation
     isFavourite: Boolean,        // State should be hoisted from the caller
     onFavouriteClick: () -> Unit // Callback to notify the caller of the change
 ) {
@@ -79,21 +79,13 @@ fun RecipeImage(
                 .fillMaxWidth()
                 .padding(16.dp)
                 .align(Alignment.TopCenter),
-            horizontalArrangement = Arrangement.SpaceBetween,
+
+            horizontalArrangement = Arrangement.End,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            IconButton(
-                onClick = onBackClick,
-                modifier = Modifier
-                    .background(Color.Black.copy(alpha = 0.3f), CircleShape)
-                    .size(40.dp) // Consistent size
-            ) {
-                Icon(
-                    imageVector = Icons.Filled.ArrowBack,
-                    contentDescription = "Back",
-                    tint = Color.White
-                )
-            }
+
+
+
 
             IconButton(
                 onClick = onFavouriteClick, // Use the passed lambda

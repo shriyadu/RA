@@ -21,10 +21,10 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.rememberAsyncImagePainter
-import com.example.recipeapp.ui.feature.dashboard.model.Recipe
+import com.example.recipeapp.core.data.local.RecipeEntity
 
 @Composable
-fun RecipeCard(recipe: Recipe, onClick: () -> Unit) {
+fun RecipeCard(recipe: RecipeEntity, onClick: () -> Unit) {
     Card(
         modifier = Modifier
             .width(140.dp)

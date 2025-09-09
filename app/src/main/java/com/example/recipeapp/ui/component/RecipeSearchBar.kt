@@ -1,5 +1,6 @@
 package com.example.recipeapp.ui.component
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -21,13 +22,15 @@ fun RecipeSearchBar(
     value: String,
     onValueChange: (String) -> Unit,
     modifier: Modifier = Modifier,
-    placeholder: String = "Search Any Recipe"
+    placeholder: String = "Search Any Recipe",
+    onClick: () -> Unit = {}
 ) {
     TextField(
         value = value,
         onValueChange = onValueChange,
         modifier = modifier
-            .fillMaxWidth(),
+            .fillMaxWidth()
+           .clickable { onClick() },
 
         leadingIcon = {
             Icon(
@@ -52,6 +55,7 @@ fun RecipeSearchBar(
             unfocusedIndicatorColor = Color.Transparent,
             disabledIndicatorColor = Color.Transparent
         ),
-        singleLine = true
+        singleLine = true,
+        readOnly = true
     )
 }

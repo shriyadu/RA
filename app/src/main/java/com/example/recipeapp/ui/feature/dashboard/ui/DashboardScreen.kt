@@ -35,6 +35,7 @@ fun DashboardScreen(
     onNavigateToRecipeDetail: (int: Int) -> Unit,
 
     viewModel: DashboardVM = hiltViewModel(),
+    onNavigateToSearch: () -> Unit,
 ) {
 
     val popularRecipes by viewModel.popularRecipes.collectAsState()
@@ -79,13 +80,20 @@ fun DashboardScreen(
                 item {
                     Text(
                         text = "👋 Hey ",
-                        style = MaterialTheme.typography.titleLarge,
+                        color = Color.Black,
+                        style = MaterialTheme.typography.bodyMedium.copy(
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 14.sp
+                        ),
                         modifier = Modifier.padding(bottom = 4.dp)
                     )
                     Text(
                         text = "Discover tasty and healthy recipes",
-                        style = MaterialTheme.typography.bodyMedium,
-                        color = LocalContentColor.current.copy(alpha = 0.6f)
+                        color = Color.Black,
+                        style = MaterialTheme.typography.bodyMedium.copy(
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 14.sp
+                        ),
                     )
                     Spacer(modifier = Modifier.height(12.dp))
 
@@ -93,7 +101,8 @@ fun DashboardScreen(
 
                     RecipeSearchBar(
                         value = searchText,
-                        onValueChange = { searchText = it }
+                        onValueChange = { searchText = it } ,
+                        onClick = onNavigateToSearch
                     )
                     Spacer(modifier = Modifier.height(20.dp))
                     Text(
@@ -116,7 +125,11 @@ fun DashboardScreen(
 
                     Text(
                         text = "All Recipes",
-                        style = MaterialTheme.typography.titleMedium
+                        color = Color.Black,
+                        style = MaterialTheme.typography.bodyMedium.copy(
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 14.sp
+                        ),
                     )
                     Spacer(modifier = Modifier.height(8.dp))
                 }

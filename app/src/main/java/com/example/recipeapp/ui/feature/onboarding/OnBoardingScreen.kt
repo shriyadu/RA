@@ -18,8 +18,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.recipeapp.ui.component.WidButton
 
 
@@ -46,19 +48,31 @@ fun OnBoardingScreen(onNavigateToDashboard: () -> Unit) {
         ) {
             Text(
                 text = "Welcome to",
-                style = MaterialTheme.typography.titleLarge,
-                color = Color.White
-            )
+                color = Color.White,
+                style = MaterialTheme.typography.headlineMedium.copy(
+                    fontSize = 28.sp,
+                    fontWeight = FontWeight.Normal,
+                    fontStyle = FontStyle.Normal
+                )
+             )
             Text(
                 text = "Recipiie",
-                style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
-                color = Color.White
+                color = Color.White,
+                style = MaterialTheme.typography.headlineMedium.copy(
+                    fontSize = 28.sp,
+                    fontWeight = FontWeight.Normal,
+                    fontStyle = FontStyle.Normal
+                )
             )
             Spacer(modifier = Modifier.height(8.dp))
             Text(
                 text = "Please sign in to continue",
-                style = MaterialTheme.typography.bodyLarge,
-                color = Color.White
+                color = Color.White,
+                style = MaterialTheme.typography.headlineMedium.copy(
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight.Normal,
+                    fontStyle = FontStyle.Normal
+                )
             )
             Spacer(modifier = Modifier.height(24.dp))
             WidButton(
